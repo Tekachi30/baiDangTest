@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 });
 
 
-
+const {routerPost} = require('./routers/postRouter');
 // Thiết lập body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -51,7 +51,7 @@ app.use(cors({
 app.use(express.json());
 
 // Định tuyến
-
+app.use(routerPost);
 
 // Serve các tệp tĩnh trong thư mục "uploads"
 app.use(express.static("uploads"));
