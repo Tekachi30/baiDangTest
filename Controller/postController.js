@@ -11,6 +11,33 @@ const getPost = async (req, res) => {
     }
 }
 
+const createPost = async (req, res) => {
+    try {
+        const {
+            title,
+            post_content,
+            user_id,
+        } = req.body;
+        if(title==''|| post_content==''||user_id=='')
+        {
+
+        }else{
+            const post = await Post.create({
+                title,
+                post_content,
+                user_id,
+            });
+            return res.status(201).json({
+                message: "Thêm post oke"
+            });
+        }
+    } catch (error) {
+        res.json("không tạo được post ");
+        console.log(error);
+    }
+} 
+
 module.exports = {
     getPost,
+    createPost,
 };
